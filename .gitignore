@@ -1,3 +1,4 @@
 ﻿# previews and local tooling stay out of the repo
 _preview*.png
 .shots*
+_submit/
