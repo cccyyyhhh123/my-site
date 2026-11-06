@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>my-site — the learning website</title>
+<meta name="description" content="The site I built during Web Technologies: a home page, sixteen quotes, project ideas, and a machine that turns itself off.">
+<link rel="icon" href="Images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="Images/icon-180.png">
+<meta name="theme-color" content="#fffdf9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-site">
+<meta property="og:title" content="my-site — the learning website">
+<meta property="og:description" content="Four pages built during Web Technologies, with one menu shared by all of them.">
+<meta property="og:url" content="https://cccyyyhhh123.github.io/my-site/">
+<meta property="og:image" content="https://cccyyyhhh123.github.io/my-site/Images/cover-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav"></div>
+
+<main>
+  <div class="hero">
+    <img src="Images/hero.jpg"
+         alt="The lake on campus at sunset, with the walkway and the lights coming on">
+  </div>
+
+  <h1>The site I built in Web Technologies</h1>
+  <p>Four pages, one stylesheet, one menu that is written once and inserted into
+     every page by JavaScript. Nothing here is a template: every page is a file
+     you can read from top to bottom.</p>
+
+  <h2>What is on it</h2>
+  <ul>
+    <li><a href="quotes.html">Quotes</a> — sixteen lines I keep coming back to, each with
+        who said it and where it comes from. The page opens on a random one, and the
+        field hides the ones that do not match what you type.</li>
+    <li><a href="project.html">Projects</a> — six small things I could build, who each
+        one is for, and the order I would build it in.</li>
+    <li><a href="machine.html">Machine</a> — a box with a switch that turns itself off,
+        and a reaction game that measures how fast you are.</li>
+  </ul>
+
+  <h2>How it is put together</h2>
+  <p>The menu lives in <code>nav.html</code>. Every page has an empty
+     <code>&lt;div id="nav"&gt;</code> and loads <code>nav.js</code>, which fetches the
+     menu once and drops it in — so adding a page means editing one file, not four.
+     Opened straight from the filesystem the browser refuses that request, so the
+     script falls back to the same links written inside the script.</p>
+  <p>The stylesheet has one column of 60rem, one card style used by every quote, and
+     two colours: a warm accent for the quotes, a blue one for links. The whole site
+     works on a phone: the menu wraps, the pictures crop to a shorter band, and
+     nothing scrolls sideways.</p>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Yuhan Cai · Web Technologies</span>
+  <a href="index.html">Home</a>
+  <a href="quotes.html">Quotes</a>
+  <a href="project.html">Projects</a>
+  <a href="machine.html">Machine</a>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

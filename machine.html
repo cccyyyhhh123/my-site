@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Machine — my-site</title>
+<meta name="description" content="A box with a switch that turns itself off, and a reaction game that measures how fast you are.">
+<link rel="icon" href="Images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="Images/icon-180.png">
+<meta name="theme-color" content="#fffdf9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-site">
+<meta property="og:title" content="Machine — my-site">
+<meta property="og:description" content="A useless machine, and a game that measures your reaction time.">
+<meta property="og:url" content="https://cccyyyhhh123.github.io/my-site/machine.html">
+<meta property="og:image" content="https://cccyyyhhh123.github.io/my-site/Images/cover-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav"></div>
+
+<main>
+  <h1>The machine</h1>
+  <p>Two small toys: one that undoes what you do, and one that measures you.</p>
+
+  <h2>1 · The switch that turns itself off</h2>
+  <p>Flip it. The box reaches out and puts it back. That is the whole machine —
+     it exists only to switch itself off, and it will do it every time.</p>
+
+  <div class="machine">
+    <div class="machine__box" id="machineBox">
+      <button class="machine__switch" id="machineSwitch" type="button"
+              aria-pressed="false" aria-label="The switch"></button>
+      <span class="machine__hand" aria-hidden="true"></span>
+    </div>
+    <p class="machine__status" id="machineStatus" role="status" aria-live="polite">Off.</p>
+
+  </div>
+
+  <h2>2 · How fast are you?</h2>
+  <p>Press start, wait for green, then click. Clicking before green is a miss.
+     Your best time stays in this browser.</p>
+
+  <div class="game">
+    <button class="game__pad" id="pad" type="button">
+      <strong>Start</strong>
+      <span>Click when the box turns green</span>
+    </button>
+    <p class="game__result" id="result" role="status" aria-live="polite">No attempts yet.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Yuhan Cai · Web Technologies</span>
+  <a href="index.html">Home</a>
+  <a href="quotes.html">Quotes</a>
+  <a href="project.html">Projects</a>
+  <a href="machine.html">Machine</a>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  /* ---------- 1 · the useless machine ---------- */
+  (function () {
+    var box = document.getElementById('machineBox');
+    var sw = document.getElementById('machineSwitch');
+    var status = document.getElementById('machineStatus');
+    if (!box || !sw) return;
+    var busy = false;
+
+    sw.addEventListener('click', function () {
+      if (busy || sw.getAttribute('aria-pressed') === 'true') return;
+      busy = true;
+      sw.setAttribute('aria-pressed', 'true');
+      status.textContent = 'On. The machine is thinking about it…';
+
+      setTimeout(function () {
+        box.classList.add('is-working');
+        status.textContent = 'Something is coming out of the box…';
+      }, 400);
+
+      setTimeout(function () {
+        sw.setAttribute('aria-pressed', 'false');
+        status.textContent = 'Off again. That is all it does.';
+      }, 1100);
+
+      setTimeout(function () {
+        box.classList.remove('is-working');
+        busy = false;
+      }, 1600);
+    });
+  })();
+
+  /* ---------- 2 · the reaction game ---------- */
+  (function () {
+    var pad = document.getElementById('pad');
+    var result = document.getElementById('result');
+    if (!pad || !result) return;
+
+    var state = 'idle';        // idle | waiting | ready | done
+    var startAt = 0;
+    var timer = 0;
+    var best = Number(localStorage.getItem('reactionBest')) || 0;
+
+    function showBest() {
+      if (best) result.innerHTML = 'Best so far: <b>' + best + ' ms</b>.';
+      else result.textContent = 'No attempts yet.';
+    }
+
+    function paint(label, hint, cls) {
+      pad.className = 'game__pad' + (cls ? ' ' + cls : '');
+      pad.innerHTML = '<strong>' + label + '</strong><span>' + hint + '</span>';
+    }
+
+    function start() {
+      state = 'waiting';
+      paint('Wait…', 'Not yet — wait for green', 'is-ready');
+      var delay = 900 + Math.random() * 2200;
+      timer = setTimeout(function () {
+        state = 'ready';
+        startAt = performance.now();
+        paint('Now!', 'Click', 'is-go');
+      }, delay);
+    }
+
+    pad.addEventListener('click', function () {
+      if (state === 'idle' || state === 'done') { start(); return; }
+
+      if (state === 'waiting') {
+        clearTimeout(timer);
+        state = 'done';
+        paint('Too early', 'You clicked before green — click to try again', 'is-early');
+        return;
+      }
+
+      if (state === 'ready') {
+        var ms = Math.round(performance.now() - startAt);
+        state = 'done';
+        var better = !best || ms < best;
+        if (better) {
+          best = ms;
+          localStorage.setItem('reactionBest', String(best));
+        }
+        paint(ms + ' ms', better ? 'That is your best so far — click to go again'
+                                 : 'Click to go again', '');
+        result.innerHTML = better
+          ? 'New best: <b>' + ms + ' ms</b>.'
+          : 'Last: <b>' + ms + ' ms</b> · best <b>' + best + ' ms</b>.';
+      }
+    });
+
+    showBest();
+  })();
+</script>
+</body>
+</html>

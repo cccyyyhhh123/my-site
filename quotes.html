@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quotes — my-site</title>
+<meta name="description" content="Sixteen quotes worth reading twice, each with who said it and where it comes from. Filter them, or read the one at the top.">
+<link rel="icon" href="Images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="Images/icon-180.png">
+<meta name="theme-color" content="#fffdf9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="my-site">
+<meta property="og:title" content="Quotes — my-site">
+<meta property="og:description" content="Sixteen quotes worth reading twice, each with who said it and where it comes from.">
+<meta property="og:url" content="https://cccyyyhhh123.github.io/my-site/quotes.html">
+<meta property="og:image" content="https://cccyyyhhh123.github.io/my-site/Images/cover-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav"></div>
+
+<main>
+  <h1>Quotes</h1>
+  <p>Sixteen lines worth reading twice — each with who said it, and where.</p>
+
+  <div class="random-quote" id="randomQuote" aria-live="polite">
+    <p>Loading a quote…</p>
+  </div>
+
+  <div class="filter">
+    <label for="q">Filter these quotes</label>
+    <input type="search" id="q" placeholder="Type a word, or a name…" autocomplete="off">
+    <p class="count" id="count" role="status" aria-live="polite">16 quotes</p>
+  </div>
+
+  <article class="quote">
+    <blockquote><p>This is for everyone.</p></blockquote>
+    <footer><cite>Tim Berners-Lee</cite>, <span class="source">London Olympic opening ceremony, 2012</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote>
+      <p lang="zh">千里之行，始于足下。</p>
+      <p>A journey of a thousand miles begins beneath your feet.</p>
+    </blockquote>
+    <footer><cite>Laozi</cite>, <span class="source">Tao Te Ching, chapter 64</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>What I cannot create, I do not understand.</p></blockquote>
+    <footer><cite>Richard Feynman</cite>, <span class="source">on his blackboard, 1988</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Premature optimization is the root of all evil.</p></blockquote>
+    <footer><cite>Donald Knuth</cite>, <span class="source">Structured Programming with go to Statements, 1974</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Simplicity is prerequisite for reliability.</p></blockquote>
+    <footer><cite>Edsger W. Dijkstra</cite>, <span class="source">EWD498, 1975</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote>
+      <p>Perfection is achieved, not when there is nothing more to add, but when there
+         is nothing left to take away.</p>
+    </blockquote>
+    <footer><cite>Antoine de Saint-Exupéry</cite>, <span class="source">Terre des hommes, 1939</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>The best way to predict the future is to invent it.</p></blockquote>
+    <footer><cite>Alan Kay</cite>, <span class="source">talk at Xerox PARC, early 1970s</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>The most dangerous phrase in the language is, “We’ve always done it this way.”</p></blockquote>
+    <footer><cite>Grace Hopper</cite>, <span class="source">widely attributed; quoted in Computerworld, 1976</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Any fool can write code that a computer can understand. Good programmers write code that humans can understand.</p></blockquote>
+    <footer><cite>Martin Fowler</cite>, <span class="source">Refactoring, 1999</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Programs must be written for people to read, and only incidentally for machines to execute.</p></blockquote>
+    <footer><cite>Harold Abelson and Gerald Jay Sussman</cite>, <span class="source">Structure and Interpretation of Computer Programs, 1985</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Talk is cheap. Show me the code.</p></blockquote>
+    <footer><cite>Linus Torvalds</cite>, <span class="source">mailing list, 2000</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Measuring programming progress by lines of code is like measuring aircraft building progress by weight.</p></blockquote>
+    <footer><cite>Bill Gates</cite>, <span class="source">attributed</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>First, solve the problem. Then, write the code.</p></blockquote>
+    <footer><cite>John Johnson</cite>, <span class="source">attributed</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Make it work, make it right, make it fast.</p></blockquote>
+    <footer><cite>Kent Beck</cite>, <span class="source">Extreme Programming Explained, 1999</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>The function of good software is to make the complex appear simple.</p></blockquote>
+    <footer><cite>Grady Booch</cite>, <span class="source">Object-Oriented Analysis and Design, 1994</span></footer>
+  </article>
+
+  <article class="quote">
+    <blockquote><p>Everything should be made as simple as possible, but not simpler.</p></blockquote>
+    <footer><cite>Albert Einstein</cite>, <span class="source">attributed; a paraphrase of his 1933 lecture</span></footer>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <span>© 2026 Yuhan Cai · Web Technologies</span>
+  <a href="index.html">Home</a>
+  <a href="quotes.html">Quotes</a>
+  <a href="project.html">Projects</a>
+  <a href="machine.html">Machine</a>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  /* 1 · a random quote at the top, chosen from the cards below */
+  (function () {
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.quote'));
+    var box = document.getElementById('randomQuote');
+    if (!cards.length || !box) return;
+    var pick = cards[Math.floor(Math.random() * cards.length)];
+    var quote = pick.querySelector('blockquote').textContent.trim();
+    var source = pick.querySelector('footer').innerHTML;
+    box.innerHTML = '<p>' + quote + '</p><footer>' + source + '</footer>';
+  })();
+
+  /* 2 · the filter: hide the cards that do not match what is typed */
+  (function () {
+    var input = document.getElementById('q');
+    var count = document.getElementById('count');
+    if (!input || !count) return;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.quote'));
+    var total = cards.length;
+
+    function apply() {
+      var q = input.value.trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function (card) {
+        var hit = !q || card.textContent.toLowerCase().indexOf(q) !== -1;
+        card.hidden = !hit;
+        if (hit) shown++;
+      });
+      count.textContent = q
+        ? shown + ' of ' + total + ' quotes match'
+        : total + ' quotes';
+      count.classList.toggle('none', q !== '' && shown === 0);
+    }
+
+    input.addEventListener('input', apply);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === '/' && document.activeElement !== input) {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+    apply();
+  })();
+</script>
+</body>
+</html>
